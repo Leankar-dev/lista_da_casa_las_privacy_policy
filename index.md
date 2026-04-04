@@ -85,6 +85,7 @@ We do not use your data for advertising, profiling, marketing, or any purpose be
 - **Brute-force protection:** After repeated failed login attempts, the App enforces progressive lockouts (30 seconds → 5 minutes → 1 hour).
 - **Session timeout:** If the App is placed in the background for more than 15 minutes, you will be automatically logged out and must re-authenticate.
 - **Timing-attack resistance:** PIN comparison uses constant-time evaluation to prevent information leakage.
+- **Screen capture protection:** On Android, the App sets the `FLAG_SECURE` window flag at startup, which prevents screenshots, screen recordings, and App Switcher previews from capturing any App content. This ensures that sensitive data (shopping lists, prices, PINs) cannot be captured by other apps or system-level tools.
 
 ### 4.3 Limitations
 
