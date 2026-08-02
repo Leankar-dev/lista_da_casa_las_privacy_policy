@@ -57,7 +57,7 @@ The App does **not** request the device's Location permission, so Start.io canno
 
 This data is collected and processed by **Start.io Inc.** under its own privacy policy. We do not receive, store, or process this data ourselves.
 
-**Personalized vs. Non-Personalized Ads:** The App does not currently implement an in-app consent management dialog. Ad personalization and any related consent choices are governed by Start.io's own compliance mechanisms and by the ad-tracking controls available in your device settings (see Section 7).
+**Ads Consent:** On first launch, the App shows an in-app dialog asking whether you agree to see ads. If you decline, the Start.io SDK is never initialized and no ad-related data described in this section is collected. If you accept, ads are shown and the data above may be collected by Start.io. You can review or change your choice at any time from Settings → Privacy & Ads. This mechanism does not implement the IAB Transparency & Consent Framework (TCF) or per-vendor granular consent — it is a simple accept/decline choice covering all ad-related data collection by Start.io.
 
 ### 2.3 Information We Do NOT Collect
 
@@ -168,9 +168,14 @@ The App uses the following open-source and third-party libraries:
 
 ### 7.1 Advertising Consent
 
-The App does **not** currently display an in-app consent management dialog before loading ads. Instead:
+Before any ad is loaded, the App shows an in-app consent dialog asking you to accept or decline ads. Your choice is stored on your device and used as follows:
 
-- Ad-related identifiers (such as your Advertising ID) are subject to the controls your operating system provides — see Section 7.4 for how to reset or limit them.
+- **If you decline:** the Start.io SDK is never initialized on that device, no banner or interstitial ads are shown, and none of the data described in Section 2.2 is collected.
+- **If you accept:** ads are shown and Start.io may collect the data described in Section 2.2.
+- **Changing your choice:** you can review or change your decision at any time from Settings → Privacy & Ads. Declining after previously accepting stops future ad loads on that device, though data already sent to Start.io while ads were enabled cannot be recalled by the App.
+
+This is a binary accept/decline mechanism, not an IAB Transparency & Consent Framework (TCF) implementation with per-vendor granularity. In addition:
+
 - You can request Start.io to stop collecting, sharing, or using your data for targeted advertising at any time via their opt-out page ([https://www.start.io/optout-right/](https://www.start.io/optout-right/)) or by emailing privacy@start.io.
 - If you are located in the EEA, UK, or another region with similar requirements, you may exercise the rights described in Sections 7.2–7.4 directly with Start.io or through your device's privacy settings.
 
@@ -180,7 +185,7 @@ For users located in the EU/EEA, the following applies under the **General Data 
 
 - **Data Controller for app data:** You are the sole data controller for all data stored locally in the App. We (Leankar.dev) do not process your personal data.
 - **Data Controller for advertising data:** Start.io Inc., 584 Broadway, New York, NY 10012, USA.
-- **Lawful basis for advertising:** Legitimate interest (Article 6(1)(f) GDPR) for ad delivery and measurement, since the App does not currently collect explicit consent through an in-app dialog. If you object, you can restrict processing using the controls in Section 7.1 and 7.4.
+- **Lawful basis for advertising:** Consent (Article 6(1)(a) GDPR), collected through the in-app dialog described in Section 7.1. Ads are only shown, and Start.io only receives data, after you accept.
 - **Data transfers outside the EU:** Start.io may transfer advertising data to servers in the United States and other countries. Refer to Start.io's privacy policy for the safeguards applied to such transfers.
 - **Your rights:** You have the right to access, rectify, erase, restrict processing of, and port your data, as well as the right to object to profiling based on advertising data. Exercise these rights directly with Start.io at privacy@start.io or via [https://www.start.io/optout-right/](https://www.start.io/optout-right/), or by contacting us at leankar.dev@gmail.com.
 - **Right to object:** You may object to processing based on legitimate interest at any time using the channels above.
@@ -192,7 +197,7 @@ For users located in Brazil, the following applies under the **Lei Geral de Prot
 
 - **Controller for app data:** You are the sole controller for all data stored locally in the App. We (Leankar.dev) process no personal data on our end.
 - **Operator for advertising data:** Start.io Inc. acts as an operator (operador) processing advertising data as described in Section 2.2.
-- **Legal basis for advertising:** Legitimate interest (interesse legítimo) for ad delivery, personalization, and fraud prevention. The App does not currently present an in-app consent dialog; you may object or opt out through the channels in Section 7.1.
+- **Legal basis for advertising:** Consentimento (consent), collected through the in-app dialog described in Section 7.1. Ads are only shown, and Start.io only receives data, after you accept.
 - **Your rights under LGPD:** Confirmation of processing, access, correction, anonymization or deletion of unnecessary data, portability, information about third parties with whom data is shared, right to revoke consent, and right to file a complaint with the ANPD (Autoridade Nacional de Proteção de Dados).
 - **Data Processing Report (RIPD):** If required, you may request information about our data processing activities by contacting leankar.dev@gmail.com.
 - **DPO Contact:** leankar.dev@gmail.com
@@ -225,6 +230,40 @@ Because all user-provided data is local to your device, you have full and immedi
 | **Withdraw** | Uninstall the App — all local data is permanently deleted from the device |
 | **Ad Preferences** | Opt out directly with Start.io at [start.io/optout-right](https://www.start.io/optout-right/) or privacy@start.io |
 | **Advertising ID** | Reset or delete via device settings (see Section 7.4) |
+
+<a id="data-deletion"></a>
+
+### 8.1 How to Request Data Deletion
+
+**Lista da Casa**, developed by **Leankar.dev**, gives you two ways to delete your data:
+
+**1. Delete in-app data (Settings → Delete Account)**
+
+1. Open **Lista da Casa**.
+2. Go to **Settings**.
+3. Tap **Delete Account** and confirm.
+
+This immediately and permanently erases, from your device:
+
+- All shopping lists, items, markets, and purchase history (local SQLite database)
+- Your username and PIN (secure device storage)
+
+Your language preference and ad-consent choice (Section 7.1) are device settings, not personal data, and are kept so the App remembers them if you continue using it — they are also erased if you uninstall the App.
+
+**2. Uninstall the App**
+
+Uninstalling **Lista da Casa** from your device deletes the entire application, including the local database and all secure storage entries, with no data retained on our side — we never had a copy, since everything is local-first (Section 4.1).
+
+**3. Data held by Start.io (advertising SDK)**
+
+If you accepted ads (Section 7.1), the Start.io SDK may have already sent your Advertising ID and IP address to Start.io's servers before you delete the App. Neither of the two options above can recall data already sent to Start.io. To request its deletion, contact Start.io directly:
+
+- Opt-out page: [https://www.start.io/optout-right/](https://www.start.io/optout-right/)
+- Email: privacy@start.io
+
+Start.io retains this data according to their own retention policy (see Section 10.2); we do not control or have access to it.
+
+**What is never deleted because it was never collected:** we do not operate any servers or accounts, so there is no copy of your shopping data, username, or PIN anywhere outside your device to delete.
 
 For rights requests related to advertising data collected by Start.io, contact Start.io directly (privacy@start.io) or use the controls described in Section 7.
 
