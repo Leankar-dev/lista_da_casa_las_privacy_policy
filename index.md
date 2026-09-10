@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Privacy Policy — Lista da Casa
-description: Privacy Policy for the Lista da Casa app (Android/iOS). Last updated August 2, 2026 .
+description: Privacy Policy for the Lista da Casa app (Android/iOS). Last updated September 10, 2026 .
 lang: en
 ---
 
@@ -11,7 +11,7 @@ lang: en
 **Developer:** Leankar.dev  
 **Contact:** leankar.dev@gmail.com  
 **Website:** [https://leankar.dev](https://leankar.dev)  
-**Last updated:** August 2, 2026
+**Last updated:** September 10, 2026
 
 ---
 
@@ -56,6 +56,8 @@ The App uses the **Start.io (StartApp) SDK** to display banner advertisements (s
 The App does **not** request the device's Location permission, so Start.io cannot access GPS/precise location through the App — only the IP-derived approximate location described above. Start.io's SDK may, as part of its normal operation, also collect information about other apps installed on the device for ad-targeting purposes.
 
 This data is collected and processed by **Start.io Inc.** under its own privacy policy. We do not receive, store, or process this data ourselves.
+
+**On iOS specifically:** if you accept ads in the in-app dialog described below, the App additionally triggers Apple's native **App Tracking Transparency (ATT)** system prompt before requesting your IDFA, as required by Apple starting with iOS 14.5. If you deny tracking in that system prompt, the App does not access your IDFA and Start.io falls back to non-tracking, contextual ad delivery; if you allow it, Start.io may use your IDFA for cross-app ad tracking as described above. You can review or change this choice at any time in your device's Settings → Privacy & Security → Tracking.
 
 **Ads Consent:** On first launch, the App shows an in-app dialog asking whether you agree to see ads. If you decline, the Start.io SDK is never initialized and no ad-related data described in this section is collected. If you accept, ads are shown and the data above may be collected by Start.io. You can review or change your choice at any time from Settings → Privacy & Ads. This mechanism does not implement the IAB Transparency & Consent Framework (TCF) or per-vendor granular consent — it is a simple accept/decline choice covering all ad-related data collection by Start.io.
 
@@ -158,6 +160,7 @@ The App uses the following open-source and third-party libraries:
 | flutter\_neumorphic\_plus | UI design system | None |
 | url\_launcher | Opening external links (e.g. this policy, app store page) in the device's browser | None collected by the App itself |
 | **startapp\_sdk** | **Banner and interstitial advertising (Start.io)** | **See Section 2.2 and Section 7** |
+| **app\_tracking\_transparency** | **iOS-only: triggers Apple's native ATT permission prompt before Start.io accesses the IDFA** | **See Section 2.2 and Section 7.1** |
 | **in\_app\_update** | **Google Play in-app update checks and prompts** | **See Section 3.3 and Section 5.3** |
 
 > **Note on Google Fonts:** The `google_fonts` package may request font files from Google's servers on first use if fonts are not yet cached on the device. No personal data is included in these requests.
@@ -174,7 +177,7 @@ Before any ad is loaded, the App shows an in-app consent dialog asking you to ac
 - **If you accept:** ads are shown and Start.io may collect the data described in Section 2.2.
 - **Changing your choice:** you can review or change your decision at any time from Settings → Privacy & Ads. Declining after previously accepting stops future ad loads on that device, though data already sent to Start.io while ads were enabled cannot be recalled by the App.
 
-This is a binary accept/decline mechanism, not an IAB Transparency & Consent Framework (TCF) implementation with per-vendor granularity. In addition:
+This is a binary accept/decline mechanism, not an IAB Transparency & Consent Framework (TCF) implementation with per-vendor granularity. On iOS, accepting in this dialog also triggers Apple's separate native App Tracking Transparency (ATT) prompt, as described in Section 2.2 — both must be allowed for Start.io to access your IDFA. In addition:
 
 - You can request Start.io to stop collecting, sharing, or using your data for targeted advertising at any time via their opt-out page ([https://www.start.io/optout-right/](https://www.start.io/optout-right/)) or by emailing privacy@start.io.
 - If you are located in the EEA, UK, or another region with similar requirements, you may exercise the rights described in Sections 7.2–7.4 directly with Start.io or through your device's privacy settings.
